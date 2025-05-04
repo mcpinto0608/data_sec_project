@@ -1,0 +1,2 @@
+params,threshold,f1_score
+"{'n_estimators': 100, 'max_samples': 0.8, 'contamination': 0.01}",0.0534082966806812,0.5419616722752658
