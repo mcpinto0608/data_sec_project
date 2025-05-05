@@ -80,7 +80,23 @@ dataset_project/
 │   └── final_attack_tuning.ipynb
 │
 ├── real_traffic_scripts/ # OPTIONAL (NOT NEEDED TO RUN)
-│ └── *.py # Scripts for traffic generation and PCAP capture
+│ ├── attack/
+│ │   ├── extraction/
+│ │   │   └── extract_attack_features.py
+│ │   ├── real_generation/
+│ │   │   └── capture_attack_traffic.sh
+│ │   └── synthetic_generation/
+│ │       └── attack_traffic_generation.py
+│ └── benign/
+│     ├── extraction/
+│     │   └── extract_benign_features.py
+│     ├── real_generation/
+│     │   ├── capture_benign_traffic.sh
+│     │   ├── capture_heavy_benign.sh
+│     │   ├── generate_benign_traffic.sh
+│     │   └── generate_diverse_benign.sh
+│     └── synthetic_generation/
+│         └── benign_advanced_generation.py
 │
 └── README.md
 
