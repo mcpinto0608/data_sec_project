@@ -225,6 +225,8 @@ Mátyás managed the generation of realistic network traffic for training and ev
 
 This phase provided a hybrid dataset combining both realistic and synthetic data for robust model evaluation.
 
+DISCLAIMER: My contribution only consists of one commit as for my step everything was done locally and committed as a whole.
+
 ---
 
 ### Phase 3: Adversarial Evaluation and Tuning — *Miguel Pinto*
