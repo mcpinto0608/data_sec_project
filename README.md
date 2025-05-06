@@ -179,3 +179,68 @@ Notes
     The real_traffic_scripts/ folder is optional and contains traffic generation tools. It is not needed to run the main pipeline.
 
     All generated files (models, summaries) are saved in the models/ folder automatically.
+
+References
+
+    Key research was considered throughout the project to guide design and methodology:
+        
+        Model Selection: Isolation Forest and Random Forest were chosen with awareness of foundational works by Liu et al. (2012) and Breiman (2001), along with applied uses in intrusion detection (e.g., Chua et al., 2024; Wu et al., 2022).
+        
+        Traffic and Attack Generation: Evasion techniques were aligned with known scan behavior described by Ring et al. (2018) and Dabbagh et al. (2011), focusing on slow, stealthy probes.
+        
+        Adversarial Testing: The structure of whitebox, greybox, and blackbox evaluations was informed by Yazdanpour et al. (2023) and Huang et al. (2019), which outline threat models based on attacker knowledge.
+       
+        Robustness and Evasion Defense: Final tuning strategies drew on ideas from Peng et al. (2020) and Alshahrani et al. (2022), who explored retraining and synthetic evasion traffic.
+
+
+## Team Contributions
+
+This project was developed in three phases, with each team member responsible for one phase. Miguel Pinto served as the overall team lead, ensuring coordination and consistency across all stages.
+
+---
+
+### Phase 1: Initial Modeling — *Ahmed Lotfy*
+
+Ahmed was responsible for establishing the project's initial detection framework:
+
+- Selected the **CICIDS2017 dataset** for training and evaluation.
+- Implemented an **Isolation Forest** for unsupervised anomaly detection, aiming for high recall and class balance.
+- Transitioned to a **Random Forest** classifier due to improved supervised performance.
+- Tuned model hyperparameters and evaluated baseline performance metrics.
+- Included a small subset of **early real traffic** to assess generalization.
+
+His work produced a supervised baseline model that was critical for subsequent adversarial testing.
+
+---
+
+### Phase 2: Real Traffic Generation — *Mátyás Szikra*
+
+Mátyás managed the generation of realistic network traffic for training and evaluation:
+
+- Set up a controlled environment using **virtual machines** to simulate attacker and victim systems.
+- Generated **low-and-slow port scans** using nmap to mimic stealthy reconnaissance behavior.
+- Collected **benign traffic** from typical network activities such as browsing and file transfers.
+- Supplemented the dataset with **synthetic attack flows** for greater diversity.
+- Created custom scripts to extract **CIC-style flow features** and exported labeled CSV datasets.
+
+This phase provided a hybrid dataset combining both realistic and synthetic data for robust model evaluation.
+
+---
+
+### Phase 3: Adversarial Evaluation and Tuning — *Miguel Pinto*
+
+Miguel led the adversarial robustness and refinement phase:
+
+- Developed and executed a range of **evasion attacks** based on three threat models:
+  - **Whitebox**: Full access to model internals, enabling precise feature manipulation.
+  - **Greybox**: Partial knowledge of features and benign traffic, using statistical mimicry and surrogate models.
+  - **Blackbox**: Only observed model outputs, using trial-and-error blending and basic transformation techniques.
+- Evaluated the model's performance under these conditions and identified key weaknesses.
+- **Retrained the model** with successful evasive samples to improve robustness.
+- Confirmed that **final blackbox attacks were able to evade detection**, highlighting practical risks.
+
+As team lead, Miguel also:
+
+- Coordinated technical planning and task distribution across all phases.
+- Ensured consistency in data formats, feature extraction methods, and evaluation metrics.
+- Oversaw integration of team efforts into a cohesive project workflow.
